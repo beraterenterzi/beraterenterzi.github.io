@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berat Eren Terzioğlu - ML Engineer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a0a0a, #0c1220, #1e3a8a, #1d4ed8);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(29, 78, 216, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(96, 165, 250, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(0.5deg); }
+            66% { transform: translateY(20px) rotate(-0.5deg); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(29, 78, 216, 0.2));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #93c5fd;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #2563eb 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #9ca3af;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .contact-text {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #e5e7eb;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d1d5db;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: #8b5cf6;
+            font-weight: 600;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-top: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 4px 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(even) .experience-card {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-connector {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            grid-column: 3;
+            grid-row: 1;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            grid-column: 1;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-connector {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(odd) .experience-card {
+            grid-column: 3;
+        }
+
+        .timeline-connector {
+            width: 4px;
+            height: 100%;
+            min-height: 120px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .timeline-connector::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 50%;
+            border: 3px solid #0a0a0a;
+        }
+
+        .timeline-date {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
+            display: inline-block;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            color: #8b5cf6;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .job-description {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(59, 130, 246, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2563eb;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            color: #93c5fd;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(37, 99, 235, 0.25);
+            transform: scale(1.05);
+            color: #dbeafe;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            height: fit-content;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(245, 158, 11, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .project-company {
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .project-date {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .project-description {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(30, 64, 175, 0.15);
+            border: 1px solid rgba(30, 64, 175, 0.3);
+            color: #93c5fd;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(30, 64, 175, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Education & Certifications */
+        .education-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .education-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        .cert-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cert-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+
+        .cert-item:hover {
+            color: #10b981;
+        }
+
+        .cert-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .timeline-item .experience-card,
+            .timeline-item .timeline-date {
+                grid-column: 1 !important;
+                text-align: left !important;
+            }
+            
+            .timeline-connector {
+                display: none;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .education-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="scrollProgress"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 AI/ML Engineer & Innovation Leader</div>
+                <h1 class="hero-title">Berat Eren Terzioğlu</h1>
+                <p class="hero-subtitle">Senior Machine Learning Engineer</p>
+                <p class="hero-description">
+                    Pioneering next-generation AI solutions with Visual LLMs, Agentic AI, and enterprise-scale ML systems. 
+                    Specialized in GenAI, computer vision, and cloud-native deployments for Fortune 500 banking solutions.
+                </p>
+                
+                <div class="contact-grid">
+                    <a href="mailto:beraterenterzioglu@gmail.com" class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-text">beraterenterzioglu@gmail.com</div>
+                    </a>
+                    <a href="tel:+905318557848" class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-text">+90 531 855 78 48</div>
+                    </a>
+                    <a href="https://linkedin.com/in/beraterenterzioglu" class="contact-item" target="_blank">
+                        <span class="contact-icon">💼</span>
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-text">Professional Profile</div>
+                    </a>
+                    <a href="https://github.com/beraterenterzi" class="contact-item" target="_blank">
+                        <span class="contact-icon">🔗</span>
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-text">Code Portfolio</div>
+                    </a>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div class="contact-label">Location</div>
+                        <div class="contact-text">Istanbul, Turkey</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I'm a <span class="highlight">Senior Machine Learning Engineer</span> with 3+ years of cutting-edge experience 
+                        in AI/ML development, currently pioneering <span class="highlight">Visual Large Language Models</span> and 
+                        <span class="highlight">Agentic AI systems</span> at SOFTTECH, İş Bankası's technology powerhouse.
+                    </p>
+                    <p>
+                        My expertise spans from <span class="highlight">GenAI and LLMs</span> to enterprise-scale deployments 
+                        using <span class="highlight">Kubernetes, CUDA, and cloud-native architectures</span>. I specialize in 
+                        transforming complex business challenges into intelligent, scalable AI solutions that serve millions of users.
+                    </p>
+                    <p>
+                        Currently leading next-generation projects including <span class="highlight">Order Hub</span> with 
+                        advanced agentic AI capabilities and developing breakthrough document understanding systems 
+                        powered by cutting-edge LLMs.
+                    </p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">AI/ML Projects</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Enterprise Systems</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Cloud Native</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Journey</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Jul 2022 - Present</div>
+                    <div class="timeline-connector"></div>
+                    <div class="experience-card">
+                        <h3 class="job-title">AI Software Engineer</h3>
+                        <p class="company">SOFTTECH (İş Bankası Technology)</p>
+                        <p class="job-description">
+                            I specialize in creating innovative BPM solutions by leveraging cutting-edge tools in Machine Learning (ML), 
+                            Deep Learning (DL), and Generative AI (GenAI) with Python. My expertise spans new-generation NLP, Computer Vision, 
+                            and GenAI/LLM product development. As a key member of İşBank's Technology Automation Team, I focus on delivering 
+                            transformative AI-driven solutions that enhance operational efficiency and drive business growth.
+                        </p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">GenAI</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">Deep Learning</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">BPM Solutions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2022 - Jul 2022</div>
+                    <div class="timeline-connector"></div>
+                    <div class="experience-card">
+                        <h3 class="job-title">Embedded Systems & AI Engineer</h3>
+                        <p class="company">MOVE ON</p>
+                        <p class="job-description">
+                            Development of Deep Learning Algorithms and Image Processing Algorithms for Autonomous Vehicles. 
+                            Experience with Python and Deep Learning frameworks (PyTorch, Keras, TensorFlow). 
+                            Also gained experience with OCR applications on natural scenarios for real-world implementations.
+                        </p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Keras</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">OCR</span>
+                            <span class="skill-tag">Autonomous Vehicles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2021 - Dec 2021</div>
+                    <div class="timeline-connector"></div>
+                    <div class="experience-card">
+                        <h3 class="job-title">AI Engineer Intern</h3>
+                        <p class="company">MOVE ON</p>
+                        <p class="job-description">
+                            Gained foundational experience in AI and machine learning applications. Worked on various projects 
+                            involving computer vision and deep learning algorithms. Contributed to autonomous vehicle projects 
+                            and learned industry best practices in AI development.
+                        </p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2021 - Aug 2021</div>
+                    <div class="timeline-connector"></div>
+                    <div class="experience-card">
+                        <h3 class="job-title">Engineering Intern</h3>
+                        <p class="company">TÜV AUSTRIA TURK</p>
+                        <p class="job-description">
+                            Worked in the IT department and gained valuable experience in IT infrastructure and network systems. 
+                            Developed understanding of enterprise-level technology operations and quality assurance processes 
+                            in a multinational certification and testing company.
+                        </p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">IT Infrastructure</span>
+                            <span class="skill-tag">Network Systems</span>
+                            <span class="skill-tag">Quality Assurance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2020 - Oct 2020</div>
+                    <div class="timeline-connector"></div>
+                    <div class="experience-card">
+                        <h3 class="job-title">Engineering Intern</h3>
+                        <p class="company">Senkron Elektrik</p>
+                        <p class="job-description">
+                            Early engineering internship focused on electrical systems and automation. Gained hands-on experience 
+                            with electrical engineering principles and industrial automation systems, laying the foundation 
+                            for future work in embedded systems and AI applications.
+                        </p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Electrical Systems</span>
+                            <span class="skill-tag">Industrial Automation</span>
+                            <span class="skill-tag">Engineering Principles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-container">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>🤖 AI/ML & GenAI</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">GenAI</span>
+                            <span class="skill-item">Visual Large Language Models</span>
+                            <span class="skill-item">Large Language Models</span>
+                            <span class="skill-item">Agentic AI</span>
+                            <span class="skill-item">LLaMA</span>
+                            <span class="skill-item">Prompt Engineering</span>
+                            <span class="skill-item">Deep Learning (8 endorsements)</span>
+                            <span class="skill-item">Machine Learning (6 endorsements)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🔧 ML/DL Frameworks</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">TensorFlow (5 endorsements)</span>
+                            <span class="skill-item">PyTorch (4 endorsements)</span>
+                            <span class="skill-item">Artificial Neural Networks</span>
+                            <span class="skill-item">Convolutional Neural Networks</span>
+                            <span class="skill-item">Sequence Models</span>
+                            <span class="skill-item">Logistic Regression</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>👁️ Computer Vision & NLP</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Computer Vision (7 endorsements)</span>
+                            <span class="skill-item">Image Processing (8 endorsements)</span>
+                            <span class="skill-item">Natural Language Processing (1 endorsement)</span>
+                            <span class="skill-item">OpenCV (2 endorsements)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>💻 Programming Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">C++ (2 endorsements)</span>
+                            <span class="skill-item">MATLAB (5 endorsements)</span>
+                            <span class="skill-item">HTML</span>
+                            <span class="skill-item">CSS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>☁️ Cloud & DevOps</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Kubernetes (1 endorsement)</span>
+                            <span class="skill-item">OpenShift (1 endorsement)</span>
+                            <span class="skill-item">Docker (2 endorsements)</span>
+                            <span class="skill-item">AWS (1 endorsement)</span>
+                            <span class="skill-item">CUDA (2 endorsements)</span>
+                            <span class="skill-item">Redis</span>
+                            <span class="skill-item">Linux (2 endorsements)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🌐 Web & APIs</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">FastAPI</span>
+                            <span class="skill-item">Flask</span>
+                            <span class="skill-item">REST APIs</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>📊 Data Science & Analytics</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Pandas (1 endorsement)</span>
+                            <span class="skill-item">NumPy (1 endorsement)</span>
+                            <span class="skill-item">Matplotlib</span>
+                            <span class="skill-item">Seaborn</span>
+                            <span class="skill-item">Time Series Analysis</span>
+                            <span class="skill-item">Data Analysis</span>
+                            <span class="skill-item">Analytical Skills (3 endorsements)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🛠️ Development & Methodology</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Agile Methodologies</span>
+                            <span class="skill-item">Software Development</span>
+                            <span class="skill-item">BPM Solutions</span>
+                            <span class="skill-item">Enterprise Applications</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🌍 Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">English (6 endorsements)</span>
+                            <span class="skill-item">Turkish (Native)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🎓 Specialized Programs</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Softtech Data Science Development Program</span>
+                            <span class="skill-item">Softtech Deep Learning Development Program</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Order Hub - Next-Gen AI Platform</h3>
+                        <p class="project-company">SOFTTECH</p>
+                        <p class="project-date">May 2025 - Present</p>
+                    </div>
+                    <p class="project-description">
+                        Revolutionary order management platform powered by Visual Large Language Models and Agentic AI. 
+                        Features advanced CUDA optimization, Kubernetes orchestration, and Redis caching for 
+                        enterprise-scale performance.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Visual LLMs</span>
+                        <span class="tech-tag">Agentic AI</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">CUDA</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">GenAI</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">PAPIRUS - Document Understanding API</h3>
+                        <p class="project-company">SOFTTECH</p>
+                        <p class="project-date">Jan 2024 - May 2024</p>
+                    </div>
+                    <p class="project-description">
+                        Advanced document understanding system for banking documents using Large Language Models, 
+                        GenAI, and OCR engines. Features S3 integration, FastAPI deployment, and scalable NLP 
+                        model training capabilities.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Large Language Models</span>
+                        <span class="tech-tag">GenAI</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">LLaMA</span>
+                        <span class="tech-tag">AWS S3</span>
+                        <span class="tech-tag">OpenShift</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">MOTIF - Automated Workflow System</h3>
+                        <p class="project-company">SOFTTECH</p>
+                        <p class="project-date">Nov 2023 - Apr 2024</p>
+                    </div>
+                    <p class="project-description">
+                        Intelligent automation system for İş Bank's central instruction workflows. Extracts information 
+                        from unstructured documents using OCR and NLP, integrating seamlessly with Pega system 
+                        on Instabase platform.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Workflow Automation</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">AI-Powered Comment Classifier</h3>
+                        <p class="project-company">SOFTTECH</p>
+                        <p class="project-date">Dec 2022 - Jun 2023</p>
+                    </div>
+                    <p class="project-description">
+                        Enterprise-grade customer sentiment analysis system using ensemble ML models. Processes 
+                        thousands of customer comments daily with 95%+ accuracy, deployed on OpenShift 
+                        serving İş Bank's production environment.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">OpenShift</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Autonomous Vehicle License Plate Recognition</h3>
+                        <p class="project-company">MOVE ON</p>
+                        <p class="project-date">Oct 2021 - Dec 2021</p>
+                    </div>
+                    <p class="project-description">
+                        Real-time license plate detection and recognition system using YOLOv5. Custom-trained 
+                        model with high accuracy for autonomous vehicle applications and traffic management systems.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">YOLOv5</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Real-time Processing</span>
+                        <span class="tech-tag">Object Detection</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Underwater Autonomous Vehicle AI</h3>
+                        <p class="project-company">Kocaeli University</p>
+                        <p class="project-date">Feb 2021 - May 2021</p>
+                    </div>
+                    <p class="project-description">
+                        Advanced underwater image processing applications with autonomous vehicle "Lucky Fin". 
+                        Developed specialized computer vision algorithms for underwater environments and 
+                        autonomous navigation systems.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Underwater Vision</span>
+                        <span class="tech-tag">Autonomous Systems</span>
+                        <span class="tech-tag">Image Processing</span>
+                        <span class="tech-tag">Robotics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section class="section">
+        <div class="container">
+            <div class="education-section">
+                <h2 class="section-title">Education & Certifications</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <h3 class="education-title">🎓 Education</h3>
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                                Electronics and Communication Engineering
+                            </h4>
+                            <p style="color: #8b5cf6; font-weight: 600; margin-bottom: 0.5rem;">
+                                Kocaeli University
+                            </p>
+                            <p style="color: #9ca3af; margin-bottom: 1rem;">
+                                2017 - 2022 | English Program
+                            </p>
+                            <p style="color: #d1d5db; line-height: 1.6;">
+                                Specialized in signal processing, embedded systems, and artificial intelligence. 
+                                Completed graduation projects on autonomous robotics and computer vision systems.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: #ffffff; font-size: 1rem; margin-bottom: 1rem;">
+                                🏆 Languages
+                            </h4>
+                            <p style="color: #d1d5db; margin-bottom: 0.5rem;">
+                                <strong>English:</strong> B1 (Intermediate)
+                            </p>
+                            <p style="color: #d1d5db;">
+                                <strong>Turkish:</strong> Native
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="education-card">
+                        <h3 class="education-title">📜 Professional Certifications</h3>
+                        <ul class="cert-list">
+                            <li class="cert-item">
+                                📊 <a href="https://certificate.miuul.com/berat_eren_terzioglu" target="_blank" style="color: #10b981; text-decoration: none; transition: color 0.3s ease;">Data Science & Machine Learning Professional Certificate (MIUUL)</a>
+                            </li>
+                            <li class="cert-item">
+                                🤖 <a href="https://certificate.miuul.com/berat_eren_terzioglu2" target="_blank" style="color: #10b981; text-decoration: none; transition: color 0.3s ease;">Advanced Machine Learning & AI Specialization (MIUUL)</a>
+                            </li>
+                            <li class="cert-item">
+                                🎯 Computer Vision with Deep Learning: Python, OpenCV and Keras (Udemy)
+                            </li>
+                            <li class="cert-item">
+                                🧠 Deep Learning A-Z™: Deep Learning with Python (Udemy)
+                            </li>
+                            <li class="cert-item">
+                                ⚡ Digital Hardware Design (FPGA/ASIC) (Udemy)
+                            </li>
+                            <li class="cert-item">
+                                🖼️ Image Processing with C++ (Udemy)
+                            </li>
+                            <li class="cert-item">
+                                🔬 Advanced Machine Learning Specialization
+                            </li>
+                            <li class="cert-item">
+                                ☁️ AWS Cloud Practitioner Essentials
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-card, .project-card, .skill-category, .stat-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
